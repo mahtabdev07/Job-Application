@@ -1,20 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins} from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/providers/queryProvider";
 import ReduxProvider from "@/providers/reduxProvider";
-import { ThemeProvider } from "@/context/ThemeContext";
 
-
-const geistSans = Geist({
+const geistSans = Poppins({
+  subsets: ["latin"],
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,14 +24,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="">
       <body
-        className={`${geistSans.variable} ${geistMono.variable}  antialiased`}
+        className={`${geistSans.variable} font-sans antialiased`}
       >
         <ReduxProvider>
 
           <QueryProvider>
-            <ThemeProvider>
             {children}
-            </ThemeProvider>
             
             </QueryProvider>
         </ReduxProvider>

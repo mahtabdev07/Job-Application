@@ -196,40 +196,34 @@ const JobCard: React.FC<JobCardProps> = ({
           </div>
 
           {/* Right Section */}
-          <div className="flex flex-col items-center gap-4 flex-shrink-0">
-            {/* Company Avatar */}
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-secondary text-secondary-foreground font-bold text-lg border">
-              {companyName.charAt(0).toUpperCase()}
-            </div>
+          {/* <div className="flex flex-col items-center gap-4 flex-shrink-0">
+           
 
-            {/* Bookmark Button */}
+            Bookmark Button
             <Button
               variant="ghost"
               size="icon"
               onClick={handleBookmarkClick}
-              className={`h-8 w-8 rounded-full transition-colors ${
+              className={`h-10 w-10 rounded-full transition-colors ${
                 isBookmarked 
                   ? 'text-primary bg-accent hover:bg-accent/80' 
                   : 'hover:bg-accent'
               }`}
             >
               {isBookmarked ? (
-                <BookmarkCheck size={16} className="fill-current" />
+                <BookmarkCheck  className="size-20 fill-current" />
               ) : (
-                <Bookmark size={16} />
+                <Bookmark className='!h-10 size' />
               )}
             </Button>
-          </div>
+          </div> */}
         </div>
 
         {/* Action Buttons */}
         <div className="flex items-center justify-between mt-4 pt-4 border-t">
           <div className="flex gap-2">
-           <Link href={'/'}><Button size="sm" variant={'outline'}>
-              Apply Now
-            </Button></Link> 
-            <Link href={`/seeker/job/${id}`}><Button  variant={'outline'} size="sm">
-              <ExternalLink size={14} className="mr-1" />
+      
+            <Link href={`/seeker/job/${id}`}><Button  variant={'link'} size="sm">
               View Details
             </Button></Link>
           </div>

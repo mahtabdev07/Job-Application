@@ -26,13 +26,11 @@ import {
   FileText,
   Heart,
   Bell,
-  Briefcase,
   Moon
 } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { useUser } from "@/hooks/getUser"
-import ThemeToggle from "../ThemeToggle"
 
 interface Job {
   id: string
@@ -125,7 +123,7 @@ const SeekerNavbar = () => {
         {/* Logo and Navigation */}
         <div className="flex items-center gap-8">
           <Link href="/seeker/dashboard" className="flex items-center space-x-2">
-            <Briefcase/>
+            <h1 className="text-2xl font-bold">JobApp</h1>
           </Link>
           
           <nav className="hidden md:flex items-center space-x-6">
@@ -141,12 +139,7 @@ const SeekerNavbar = () => {
             >
               Companies
             </Link>
-            <Link 
-              href="/seeker/services" 
-              className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
-            >
-              Services
-            </Link>
+          
           </nav>
         </div>
 
@@ -159,7 +152,7 @@ const SeekerNavbar = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => searchQuery.length > 2 && searchResults.length > 0 && setShowDropdown(true)}
-                className="pl-10 pr-4 h-10 bg-card border-1 shadow-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="pl-10 pr-4 rounded-full h-10 border-black bg-card border-1 shadow-none focus-visible:ring-2 focus-visible:ring-ring"
                 placeholder="Search jobs, companies..."
               />
             </div>
@@ -239,7 +232,6 @@ const SeekerNavbar = () => {
               Post a Job
             </Button>
           </Link>
-<ThemeToggle/>
           {/* Authentication Section */}
           {!user ? (
             <div className="flex items-center gap-2">
@@ -257,13 +249,7 @@ const SeekerNavbar = () => {
           ) : (
             <div className="flex items-center gap-3">
               
-              {/* Notifications */}
-              <Button variant="ghost" size="icon" className="relative">
-                <Heart className="h-4 w-4" />
-                <span className="absolute -top-1 -right-1 h-3 w-3 bg-destructive rounded-full text-[10px] text-destructive-foreground flex items-center justify-center">
-                  3
-                </span>
-              </Button>
+              
 
 
               {/* User Dropdown */}
@@ -272,7 +258,7 @@ const SeekerNavbar = () => {
                   <Button variant="ghost" className="relative h-9 w-9 rounded-full">
                     <Avatar className="h-9 w-9">
                       <AvatarImage src={user.avatar} alt={user.name} />
-                      <AvatarFallback className="bg-primary">
+                      <AvatarFallback className="bg-foreground text-white">
                         {user.name?.charAt(0)?.toUpperCase()}
                       </AvatarFallback>
                     </Avatar>

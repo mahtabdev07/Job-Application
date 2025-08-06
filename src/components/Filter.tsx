@@ -3,22 +3,12 @@
 import { Card } from "./ui/card";
 import { Label } from "./ui/label";
 import { Checkbox } from "./ui/checkbox";
-import { Slider } from "./ui/slider";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useState, useEffect } from "react";
+import { useCallback } from "react";
 
 const Filter = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-
-  const [salaryRange, setSalaryRange] = useState<[number, number]>([0, 100000]);
-
-  // Update salary range from URL on mount or param change
-  useEffect(() => {
-    const min = parseInt(searchParams.get("minSalary") || "0");
-    const max = parseInt(searchParams.get("maxSalary") || "100000");
-    setSalaryRange([min, max]);
-  }, [searchParams]);
 
   // Checkbox filter handler
   const updateQuery = useCallback(
@@ -40,28 +30,16 @@ const Filter = () => {
     [router, searchParams]
   );
 
-  // Slider update handler
-  const updateSalaryRange = (range: [number, number]) => {
-    setSalaryRange(range);
-    const [min, max] = range;
-    const params = new URLSearchParams(searchParams.toString());
-
-    params.set("minSalary", min.toString());
-    params.set("maxSalary", max.toString());
-
-    router.push(`/search?${params.toString()}`);
-  };
-
   return (
-    <Card className="w-full shadow-none px-4 py-2 gap-2">
+    <Card className="w-full shadow-none px-6 py-4 gap-2">
       <h2 className="text-lg font-semibold mb-3">Filter</h2>
 
       <div className="space-y-4">
         {/* Job Type Filter */}
         <div>
-          <h3 className="text-sm font-medium mb-2">Job Type</h3>
-          <div className="space-y-2">
-            {["remote", "hybrid"].map((type) => (
+          <h3 className="text-sm font-bold mb-3">Job Type</h3>
+          <div className="space-y-5">
+            {["onsite", "remote", "hybrid"].map((type) => (
               <div key={type} className="flex items-center space-x-2">
                 <Checkbox
                   id={type}
@@ -82,15 +60,13 @@ const Filter = () => {
 
         {/* Location Filter */}
         <div>
-          <h3 className="text-sm font-medium mb-2">Location</h3>
-          <div className="space-y-2">
-            {["chennai", "delhi"].map((location) => (
+          <h3 className="text-sm font-bold mb-3">Location</h3>
+          <div className="space-y-5">
+            {["himachal", "dehradun", "shimla"].map((location) => (
               <div key={location} className="flex items-center space-x-2">
                 <Checkbox
                   id={location}
-                  checked={searchParams
-                    .getAll("location")
-                    .includes(location)}
+                  checked={searchParams.getAll("location").includes(location)}
                   onCheckedChange={(checked) =>
                     updateQuery("location", location, !!checked)
                   }
@@ -100,24 +76,6 @@ const Filter = () => {
                 </Label>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Salary Range Filter */}
-        <div>
-          <h3 className="text-sm font-medium mb-2">Salary Range</h3>
-          <Slider
-            value={salaryRange}
-            min={0}
-            max={200000}
-            step={1000}
-            onValueChange={(range) => setSalaryRange(range as [number, number])}
-            onValueCommit={(range) =>
-              updateSalaryRange(range as [number, number])
-            }
-          />
-          <div className="text-xs text-muted-foreground mt-1">
-            ₹{salaryRange[0].toLocaleString()} - ₹{salaryRange[1].toLocaleString()}
           </div>
         </div>
       </div>

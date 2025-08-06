@@ -6,7 +6,6 @@ import { Input } from "../ui/input"
 import { Button } from "../ui/button"
 import { Briefcase, Search } from "lucide-react"
 import { useUser } from "@/hooks/getUser"
-import ThemeToggle from "../ThemeToggle"
 
 const PublicNavbar = () => {
   const { data: user, isLoading: userLoading, error } = useUser()
@@ -38,14 +37,12 @@ const PublicNavbar = () => {
               <Link href={'/register'}>
                 <Button variant={'destructive'}>Register</Button>
               </Link>
-              <ThemeToggle/>
             </>
           ) : (
             <div className="flex items-center gap-2">
               <div className="w-9 h-9 bg-primary text-black dark:text-white rounded-full flex items-center justify-center font-semibold text-sm uppercase">
               {user.name?.charAt(0)}
             </div>
-                          <ThemeToggle/>
 
             </div>
             

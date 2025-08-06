@@ -48,7 +48,7 @@ const CreateJobPage = () => {
       <h1 className="text-2xl font-bold mb-6">Create Job Posting</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
+        <div className="space-y-2">
           <Label htmlFor="title">Job Title</Label>
           <Input
             id="title"
@@ -59,7 +59,7 @@ const CreateJobPage = () => {
           />
         </div>
 
-        <div>
+        <div className="space-y-2">
           <Label htmlFor="description">Job Description</Label>
           <Textarea
             id="description"
@@ -70,7 +70,7 @@ const CreateJobPage = () => {
           />
         </div>
 
-        <div>
+        <div className="space-y-2">
           <Label htmlFor="location">Location</Label>
           <Input
             id="location"
@@ -81,8 +81,8 @@ const CreateJobPage = () => {
           />
         </div>
 
-        <div className="flex gap-4">
-          <div className="w-full">
+        <div className="space-y-6  ">
+          <div className="w-full space-y-2">
             <Label htmlFor="min">Min Salary</Label>
             <Input
               id="min"
@@ -94,7 +94,7 @@ const CreateJobPage = () => {
             />
           </div>
 
-          <div className="w-full">
+          <div className="w-full space-y-2">
             <Label htmlFor="max">Max Salary</Label>
             <Input
               id="max"

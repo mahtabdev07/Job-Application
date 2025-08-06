@@ -1,7 +1,9 @@
 'use client'
 
+import Link from "next/link"
 import { Card } from "./ui/card"
 import { useJobs } from "@/hooks/useJobs"
+import { Button } from "./ui/button"
 
 const JobDetails = ({ id }: { id: string }) => {
   const { data: jobs, isLoading, error } = useJobs()
@@ -22,42 +24,14 @@ const job = jobs.find((job: any) => String(job.id) === String(id))
       
       <div className="mt-4">
         <h2 className="text-xl font-semibold text-primary">Description</h2>
-        <p className="whitespace-pre-line text-foreground">{job.job_description}</p>
+        <p className="whitespace-pre-line line-clamp-6 text-foreground">{job.job_description}</p>
       </div>
 
+    
       <div>
-        <h2 className="text-xl font-semibold mt-6 text-primary">Responsibilities</h2>
-        <ul className="list-disc list-inside text-foreground space-y-1">
-          {job.job_highlights?.Responsibilities?.map((item: string, index: number) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div>
-        <h2 className="text-xl font-semibold mt-6 text-primary">Qualifications</h2>
-        <ul className="list-disc list-inside text-foreground space-y-1">
-          {job.job_highlights?.Qualifications?.map((item: string, index: number) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div>
-        <h2 className="text-xl font-semibold mt-6 text-primary">Apply Links</h2>
-        <ul className="list-disc list-inside text-primary space-y-2">
-          {job.apply_options?.map((option: any, index: number) => (
-            <li key={index}>
-              <a 
-                href={option.apply_link} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="underline hover:text-primary/80"
-              >
-                {option.publisher}
-              </a>
-            </li>
-          ))}
+       
+        <ul className="list-disc list-inside text-primary mt-5 space-y-2">
+          <Button variant={"secondary"}>Apply now</Button>
         </ul>
       </div>
     </Card>

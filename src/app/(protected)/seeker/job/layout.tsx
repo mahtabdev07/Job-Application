@@ -25,10 +25,7 @@ const JobPageLayout = ({children}: {children: React.ReactNode}) => {
 
 
 
-            {/* Right Sidebar */}
-            <aside className="hidden sticky top-20  lg:flex basis-1/4">
-            <AdsContainer />
-            </aside>
+         
         </main>
         </div>
   )

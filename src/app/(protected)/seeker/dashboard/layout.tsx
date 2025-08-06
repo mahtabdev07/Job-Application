@@ -20,18 +20,14 @@ const dashboardLayout = ({ children }: {children: React.ReactNode}) => {
           </Suspense>
         </aside>
 
-        <section className="flex-1 basis-2/3 min-w-1/3 flex justify-center">
-          <div className="w-full max-w-3xl">
+          <div className="w-full ">
             <Suspense fallback={<div className="flex justify-center items-center h-64">Loading...</div>}>
               {children}
             </Suspense>
           </div>
-        </section>
+        
 
-        {/* Right Sidebar */}
-        <aside className="hidden lg:flex basis-1/4">
-          <AdsContainer />
-        </aside>
+        
       </main>
     </div>
   )
