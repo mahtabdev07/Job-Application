@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins} from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/providers/queryProvider";
 import ReduxProvider from "@/providers/reduxProvider";
@@ -9,7 +9,6 @@ const geistSans = Poppins({
   variable: "--font-geist-sans",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
-
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,15 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="">
-      <body
-        className={`${geistSans.variable} font-sans antialiased`}
-      >
+      <body className={`${geistSans.variable} font-sans antialiased`}>
         <ReduxProvider>
-
-          <QueryProvider>
-            {children}
-            
-            </QueryProvider>
+          <QueryProvider>{children}</QueryProvider>
         </ReduxProvider>
       </body>
     </html>

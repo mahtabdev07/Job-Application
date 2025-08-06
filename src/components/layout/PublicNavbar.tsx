@@ -21,7 +21,7 @@ const PublicNavbar = () => {
             href="/" 
             className="flex items-center space-x-2 text-xl font-bold transition-colors hover:text-primary"
           >
-            <span className="hidden text-2xl sm:inline-block">JobApp</span>
+            <span className="hidden text-2xl sm:inline-block text-primary">JobApp</span>
           </Link>
 
           {/* Desktop Navigation */}

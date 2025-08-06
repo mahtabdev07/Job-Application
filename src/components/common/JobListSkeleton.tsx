@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Skeleton } from "@/components/ui/skeleton"
+import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const JobListSkeleton = ({ count = 5 }: { count?: number }) => {
   return (
@@ -34,7 +34,7 @@ const JobListSkeleton = ({ count = 5 }: { count?: number }) => {
         </Card>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default JobListSkeleton
+export default JobListSkeleton;
