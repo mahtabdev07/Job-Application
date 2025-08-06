@@ -13,10 +13,8 @@ const CompanyDetail = () => {
   if (isLoading) return <p>Loading company details...</p>
   if (isError) return <p>Something went wrong while fetching the company details.</p>
 
-  // Optional: handle clicking a job card
   const handleJobClick = (job : any) => {
-    // e.g. navigate to job detail page
-    // router.push(`/jobs/${job.id}`)
+    // e.g. navigate to job deail page
     console.log('Job clicked:', job)
   }
 

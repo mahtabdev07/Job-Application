@@ -32,7 +32,7 @@ const CreateJobPage = () => {
         job_location,
         salary_min: Number(salary_min),
         salary_max: Number(salary_max),
-        companyId: id, // ✅ use it here
+        companyId: id, // 
       });
       router.push(`/company/detail/${id}`);
     } catch (err) {
